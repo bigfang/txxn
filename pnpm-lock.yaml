@@ -8,6 +8,7 @@ specifiers:
   '@nestjs/platform-express': ^7.6.15
   '@nestjs/schematics': ^7.3.0
   '@nestjs/testing': ^7.6.15
+  '@prisma/client': ^2.22.0
   '@types/express': ^4.17.11
   '@types/jest': ^26.0.22
   '@types/node': ^14.14.36
@@ -22,6 +23,7 @@ specifiers:
   graphql-tools: ^7.0.4
   jest: ^26.6.3
   prettier: ^2.2.1
+  prisma: ^2.22.0
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
   rxjs: ^6.6.6
@@ -37,6 +39,7 @@ dependencies:
   '@nestjs/core': 7.6.15_19fd72ad6e93e20796310d8f58ce21b0
   '@nestjs/graphql': registry.nlark.com/@nestjs/graphql/7.10.6_b187ecf9f59fa58d231c0f6c59353c06
   '@nestjs/platform-express': registry.nlark.com/@nestjs/platform-express/7.6.15_a5e284bf185e3b13e505d42d771fb371
+  '@prisma/client': registry.nlark.com/@prisma/client/2.22.0_prisma@2.22.0
   apollo-server-express: registry.nlark.com/apollo-server-express/2.24.0_graphql@15.5.0
   graphql: registry.nlark.com/graphql/15.5.0
   graphql-tools: registry.nlark.com/graphql-tools/7.0.4_40770adb18a249d5191170e9b3cbe89c
@@ -59,6 +62,7 @@ devDependencies:
   eslint-plugin-prettier: 3.4.0_ed07edc0d33fb90bb2bebf56b9b5e0f9
   jest: registry.nlark.com/jest/26.6.3_ts-node@9.1.1
   prettier: 2.2.1
+  prisma: registry.nlark.com/prisma/2.22.0
   supertest: registry.nlark.com/supertest/6.1.3
   ts-jest: 26.5.5_jest@26.6.3+typescript@4.2.4
   ts-loader: registry.nlark.com/ts-loader/8.2.0_typescript@4.2.4
@@ -122,6 +126,8 @@ packages:
       '@babel/helper-optimise-call-expression': 7.12.13
       '@babel/traverse': registry.nlark.com/@babel/traverse/7.14.0
       '@babel/types': registry.nlark.com/@babel/types/7.14.1
+    transitivePeerDependencies:
+      - supports-color
 
   /@babel/helper-simple-access/7.13.12:
     resolution: {integrity: sha1-3WxTivthgZ0gWgEsMXkqOcel6vY=, tarball: '@babel/helper-simple-access/download/@babel/helper-simple-access-7.13.12.tgz'}
@@ -150,6 +156,8 @@ packages:
       '@babel/core': registry.nlark.com/@babel/core/7.14.0
       '@babel/helper-create-class-features-plugin': registry.nlark.com/@babel/helper-create-class-features-plugin/7.14.1_@babel+core@7.14.0
       '@babel/helper-plugin-utils': 7.13.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@babel/plugin-proposal-object-rest-spread/7.13.8_@babel+core@7.14.0:
@@ -320,6 +328,8 @@ packages:
       '@babel/helper-replace-supers': 7.13.12
       '@babel/helper-split-export-declaration': 7.12.13
       globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@babel/plugin-transform-computed-properties/7.13.0_@babel+core@7.14.0:
@@ -386,6 +396,8 @@ packages:
       '@babel/core': registry.nlark.com/@babel/core/7.14.0
       '@babel/helper-plugin-utils': 7.13.0
       '@babel/helper-replace-supers': 7.13.12
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@babel/plugin-transform-parameters/7.13.0_@babel+core@7.14.0:
@@ -489,6 +501,8 @@ packages:
       js-yaml: 3.14.1
       minimatch: 3.0.4
       strip-json-comments: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@istanbuljs/load-nyc-config/1.1.0:
@@ -548,6 +562,8 @@ packages:
       rxjs: registry.nlark.com/rxjs/6.6.7
       tslib: 2.1.0
       uuid: 8.3.2
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /@nestjs/core/7.6.15_19fd72ad6e93e20796310d8f58ce21b0:
@@ -1184,6 +1200,8 @@ packages:
     resolution: {integrity: sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=, tarball: axios/download/axios-0.21.1.tgz?cache=0&sync_timestamp=1608634195859&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.21.1.tgz}
     dependencies:
       follow-redirects: registry.nlark.com/follow-redirects/1.14.0
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /babel-plugin-dynamic-import-node/2.3.3:
@@ -1201,6 +1219,8 @@ packages:
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-instrument: 4.0.3
       test-exclude: 6.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /babel-plugin-jest-hoist/26.6.2:
@@ -2436,6 +2456,7 @@ packages:
   /fsevents/2.3.2:
     resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, tarball: fsevents/download/fsevents-2.3.2.tgz}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
     optional: true
 
   /function-bind/1.1.1:
@@ -3115,6 +3136,8 @@ packages:
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.0.0
       semver: 6.3.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /istanbul-lib-report/3.0.0:
@@ -3133,6 +3156,8 @@ packages:
       debug: 4.3.1
       istanbul-lib-coverage: 3.0.0
       source-map: 0.6.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /istanbul-reports/3.0.2:
@@ -4975,6 +5000,8 @@ packages:
       qs: 6.10.1
       readable-stream: 3.6.0
       semver: 7.3.5
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /supports-color/5.5.0:
@@ -5722,6 +5749,11 @@ packages:
       graphql: ^14.0.0 || ^15.0.0
       react: ^16.8.0 || ^17.0.0
       subscriptions-transport-ws: ^0.9.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      subscriptions-transport-ws:
+        optional: true
     dependencies:
       '@graphql-typed-document-node/core': registry.nlark.com/@graphql-typed-document-node/core/3.1.0_graphql@15.5.0
       '@types/zen-observable': 0.8.2
@@ -5932,6 +5964,8 @@ packages:
       '@babel/helper-optimise-call-expression': 7.12.13
       '@babel/helper-replace-supers': 7.13.12
       '@babel/helper-split-export-declaration': 7.12.13
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   registry.nlark.com/@babel/helper-module-transforms/7.14.0:
@@ -5947,6 +5981,8 @@ packages:
       '@babel/template': 7.12.13
       '@babel/traverse': registry.nlark.com/@babel/traverse/7.14.0
       '@babel/types': registry.nlark.com/@babel/types/7.14.1
+    transitivePeerDependencies:
+      - supports-color
 
   registry.nlark.com/@babel/helper-validator-identifier/7.14.0:
     resolution: {integrity: sha1-0mytikfGUoaxXfFUcxml0Lzycog=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/helper-validator-identifier/download/@babel/helper-validator-identifier-7.14.0.tgz}
@@ -5961,6 +5997,8 @@ packages:
       '@babel/template': 7.12.13
       '@babel/traverse': registry.nlark.com/@babel/traverse/7.14.0
       '@babel/types': registry.nlark.com/@babel/types/7.14.1
+    transitivePeerDependencies:
+      - supports-color
 
   registry.nlark.com/@babel/highlight/7.14.0:
     resolution: {integrity: sha1-MZfjdXEe9r+DTmfQ2uyI5PRhE88=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/highlight/download/@babel/highlight-7.14.0.tgz}
@@ -6023,6 +6061,8 @@ packages:
       '@babel/helper-plugin-utils': 7.13.0
       '@babel/helper-simple-access': 7.13.12
       babel-plugin-dynamic-import-node: 2.3.3
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   registry.nlark.com/@babel/runtime/7.14.0:
@@ -6064,6 +6104,8 @@ packages:
       '@babel/types': registry.nlark.com/@babel/types/7.14.1
       debug: 4.3.1
       globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
 
   registry.nlark.com/@babel/types/7.12.13:
     resolution: {integrity: sha1-i+GqjyyHbaEanPZQwOz2VpE61hE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@babel/types/download/@babel/types-7.12.13.tgz}
@@ -6649,6 +6691,8 @@ packages:
       v8-to-istanbul: 7.1.1
     optionalDependencies:
       node-notifier: 8.0.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.nlark.com/@jest/test-result/26.6.2:
@@ -6704,6 +6748,8 @@ packages:
       slash: 3.0.0
       source-map: 0.6.1
       write-file-atomic: 3.0.3
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.nlark.com/@josephg/resolvable/1.0.1:
@@ -6859,6 +6905,33 @@ packages:
       '@nestjs/core': 7.6.15_19fd72ad6e93e20796310d8f58ce21b0
       '@nestjs/platform-express': registry.nlark.com/@nestjs/platform-express/7.6.15_a5e284bf185e3b13e505d42d771fb371
       tslib: 2.1.0
+    dev: true
+
+  registry.nlark.com/@prisma/client/2.22.0_prisma@2.22.0:
+    resolution: {integrity: sha1-ygKAJbZI/coN2kFYCeownMfDvMc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@prisma/client/download/@prisma/client-2.22.0.tgz}
+    id: registry.nlark.com/@prisma/client/2.22.0
+    name: '@prisma/client'
+    version: 2.22.0
+    engines: {node: '>=10.16'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    dependencies:
+      '@prisma/engines-version': registry.nlark.com/@prisma/engines-version/2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c
+      prisma: registry.nlark.com/prisma/2.22.0
+    dev: false
+
+  registry.nlark.com/@prisma/engines-version/2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c:
+    resolution: {integrity: sha1-6Y7hcheg67VPL5MU+7/WELBebjE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@prisma/engines-version/download/@prisma/engines-version-2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c.tgz}
+    name: '@prisma/engines-version'
+    version: 2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c
+    dev: false
+
+  registry.nlark.com/@prisma/engines/2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c:
+    resolution: {integrity: sha1-TM0lXggjYF2z2Dh6UZW2/avjsMA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@prisma/engines/download/@prisma/engines-2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c.tgz}
+    name: '@prisma/engines'
+    version: 2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c
+    requiresBuild: true
     dev: true
 
   registry.nlark.com/@protobufjs/base64/1.1.2:
@@ -7585,6 +7658,8 @@ packages:
       chalk: registry.nlark.com/chalk/4.1.1
       graceful-fs: 4.2.6
       slash: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.nlark.com/babel-plugin-syntax-trailing-function-commas/7.0.0-beta.0:
@@ -7629,6 +7704,8 @@ packages:
       '@babel/plugin-transform-spread': 7.13.0_@babel+core@7.14.0
       '@babel/plugin-transform-template-literals': 7.13.0_@babel+core@7.14.0
       babel-plugin-syntax-trailing-function-commas: registry.nlark.com/babel-plugin-syntax-trailing-function-commas/7.0.0-beta.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   registry.nlark.com/big.js/5.2.2:
@@ -7871,6 +7948,8 @@ packages:
       table: registry.nlark.com/table/6.6.0
       text-table: 0.2.0
       v8-compile-cache: 2.3.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.nlark.com/event-target-shim/5.0.1:
@@ -7912,6 +7991,11 @@ packages:
     name: follow-redirects
     version: 1.14.0
     engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
     dev: false
 
   registry.nlark.com/foreach/2.0.5:
@@ -8621,6 +8705,9 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       '@types/node': '>=12'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
     dependencies:
       '@types/node': registry.nlark.com/@types/node/14.14.43
     dev: false
@@ -8669,6 +8756,17 @@ packages:
       ansi-regex: 5.0.0
       ansi-styles: registry.nlark.com/ansi-styles/4.3.0
       react-is: registry.nlark.com/react-is/17.0.2
+
+  registry.nlark.com/prisma/2.22.0:
+    resolution: {integrity: sha1-aQY/qVzcqvZgthAX15xqbdoFRRc=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/prisma/download/prisma-2.22.0.tgz}
+    name: prisma
+    version: 2.22.0
+    engines: {node: '>=10.4'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': registry.nlark.com/@prisma/engines/2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c
+    dev: true
 
   registry.nlark.com/promise-retry/2.0.1:
     resolution: {integrity: sha1-/3R6E2IKtXumiPX8Z4VUEMNw2iI=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/promise-retry/download/promise-retry-2.0.1.tgz}
@@ -8792,6 +8890,8 @@ packages:
     dependencies:
       methods: 1.1.2
       superagent: 6.1.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.nlark.com/sync-fetch/0.3.0:
