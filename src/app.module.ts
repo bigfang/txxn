@@ -6,7 +6,7 @@ import { PrismaService } from './prisma/prisma.service';
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
+      autoSchemaFile: 'schema.gql',
     }),
     UsersModule,
   ],
