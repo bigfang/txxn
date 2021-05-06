@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type User {
-  id: Float!
+  id: Int!
   username: String!
   email: String!
 }
@@ -20,12 +20,12 @@ type Mutation {
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  username: String!
+  email: String!
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  username: String
+  email: String
   id: Int!
 }
