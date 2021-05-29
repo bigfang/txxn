@@ -1,13 +1,9 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { BaseObjectType } from 'src/common/entities/base.entity';
 import { User } from 'src/users/entities/user.entity';
 
 @ObjectType()
-export class Post {
-  @Field(() => Int)
-  id: number;
-
-  createdAt: Date;
-  updatedAt: Date;
+export class Post extends BaseObjectType {
   title: string;
   content?: string;
   isPublished: boolean;

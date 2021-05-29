@@ -7,6 +7,9 @@ import { UsersModule } from './users/users.module';
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      buildSchemaOptions: {
+        numberScalarMode: 'integer',
+      },
     }),
     UsersModule,
     PostsModule,
