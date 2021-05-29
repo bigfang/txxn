@@ -4,19 +4,46 @@
 
 type User {
   id: Int!
+
+  """文章"""
+  posts: [Post!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   username: String!
   email: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Post {
+  id: Int!
+
+  """作者"""
+  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  content: String
+  isPublished: Boolean!
 }
 
 type Query {
   users: [User!]!
   user(id: Int!): User!
+  posts: [Post!]!
+  post(id: Int!): Post!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post!
 }
 
 input CreateUserInput {
@@ -27,5 +54,20 @@ input CreateUserInput {
 input UpdateUserInput {
   username: String
   email: String
+  id: Int!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String
+  isPublished: Boolean
+  authorId: Float!
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+  isPublished: Boolean
+  authorId: Float
   id: Int!
 }
