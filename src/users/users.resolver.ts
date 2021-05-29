@@ -14,12 +14,7 @@ export class UsersResolver {
 
   @ResolveField()
   posts(@Parent() author: User) {
-    return this.postsServide.findAll({ id: author.id });
-  }
-
-  @Mutation(() => User)
-  createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
-    return this.usersService.create(createUserInput);
+    return this.postsServide.findAll({ authorId: author.id });
   }
 
   @Query(() => [User], { name: 'users' })
@@ -30,6 +25,11 @@ export class UsersResolver {
   @Query(() => User, { name: 'user' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.usersService.findOne({ id: id });
+  }
+
+  @Mutation(() => User)
+  createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
+    return this.usersService.create(createUserInput);
   }
 
   @Mutation(() => User)

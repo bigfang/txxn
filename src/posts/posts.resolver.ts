@@ -13,11 +13,6 @@ export class PostsResolver {
     return this.postsService.findOne({ id: post.id }).author();
   }
 
-  @Mutation(() => Post)
-  createPost(@Args('createPostInput') createPostInput: CreatePostInput) {
-    return this.postsService.create(createPostInput);
-  }
-
   @Query(() => [Post], { name: 'posts' })
   findAll() {
     return this.postsService.findAll();
@@ -26,6 +21,11 @@ export class PostsResolver {
   @Query(() => Post, { name: 'post' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.postsService.findOne({ id: id });
+  }
+
+  @Mutation(() => Post)
+  createPost(@Args('createPostInput') createPostInput: CreatePostInput) {
+    return this.postsService.create(createPostInput);
   }
 
   @Mutation(() => Post)
