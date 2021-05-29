@@ -1,5 +1,5 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { PrismaService } from 'src/common/prisma.service';
+import { PostsService } from 'src/posts/posts.service';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { User } from './entities/user.entity';
@@ -9,14 +9,12 @@ import { UsersService } from './users.service';
 export class UsersResolver {
   constructor(
     private readonly usersService: UsersService,
-    private readonly prismaService: PrismaService
+    private readonly postsServide: PostsService
   ) {}
 
   @ResolveField()
   posts(@Parent() author: User) {
-    return this.prismaService.post.findMany({
-      where: { id: author.id },
-    });
+    return this.postsServide.findAll({ id: author.id });
   }
 
   @Mutation(() => User)

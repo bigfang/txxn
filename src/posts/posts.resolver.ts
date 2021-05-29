@@ -1,5 +1,4 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { PrismaService } from 'src/common/prisma.service';
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
 import { Post } from './entities/post.entity';
@@ -7,18 +6,11 @@ import { PostsService } from './posts.service';
 
 @Resolver(() => Post)
 export class PostsResolver {
-  constructor(
-    private readonly postsService: PostsService,
-    private readonly prismaService: PrismaService
-  ) {}
+  constructor(private readonly postsService: PostsService) {}
 
   @ResolveField()
   author(@Parent() post: Post) {
-    return this.prismaService.post
-      .findUnique({
-        where: { id: post.id },
-      })
-      .author();
+    return this.postsService.findOne({ id: post.id }).author();
   }
 
   @Mutation(() => Post)

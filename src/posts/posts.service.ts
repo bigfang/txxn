@@ -12,8 +12,8 @@ export class PostsService {
     return this.prisma.post.create({ data: createPostInput });
   }
 
-  findAll() {
-    return this.prisma.post.findMany();
+  findAll(where?: Prisma.PostWhereInput) {
+    return this.prisma.post.findMany({ where: where });
   }
 
   findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {

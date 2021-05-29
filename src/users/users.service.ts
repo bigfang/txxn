@@ -12,8 +12,8 @@ export class UsersService {
     return this.prisma.user.create({ data: createUserInput });
   }
 
-  findAll() {
-    return this.prisma.user.findMany();
+  findAll(where?: Prisma.UserWhereInput) {
+    return this.prisma.user.findMany({ where: where });
   }
 
   findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
