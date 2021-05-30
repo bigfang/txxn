@@ -59,11 +59,13 @@ type Mutation {
 input CreateUserInput {
   username: String!
   email: String!
+  password: String!
 }
 
 input UpdateUserInput {
   username: String
   email: String
+  password: String
   id: Int!
 }
 
