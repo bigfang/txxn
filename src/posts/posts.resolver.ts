@@ -30,7 +30,7 @@ export class PostsResolver {
 
   @Mutation(() => Post)
   updatePost(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
-    return this.postsService.update(updatePostInput.id, updatePostInput);
+    return this.postsService.update(updatePostInput);
   }
 
   @Mutation(() => Post)

@@ -22,10 +22,11 @@ export class PostsService {
     });
   }
 
-  update(id: number, updatePostInput: UpdatePostInput) {
+  update(updatePostInput: UpdatePostInput) {
+    const { id, ...restInput } = updatePostInput;
     return this.prisma.post.update({
       where: { id: id },
-      data: updatePostInput,
+      data: restInput,
     });
   }
 
