@@ -16,6 +16,7 @@ specifiers:
   '@types/jest': ^26.0.23
   '@types/node': ^14.17.2
   '@types/passport-jwt': ^3.0.5
+  '@types/passport-local': ^1.0.33
   '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ^4.26.0
   '@typescript-eslint/parser': ^4.26.0
@@ -27,7 +28,9 @@ specifiers:
   graphql: ^15.5.0
   graphql-tools: ^7.0.5
   jest: ^26.6.3
+  passport: ^0.4.1
   passport-jwt: ^4.0.0
+  passport-local: ^1.0.0
   prettier: ^2.3.1
   prisma: ^2.24.1
   reflect-metadata: ^0.1.13
@@ -48,14 +51,16 @@ dependencies:
   '@nestjs/core': 7.6.17_298e923666cb38181a789e7fa92b320a
   '@nestjs/graphql': 7.10.6_07c189b0f7a2e369cccc46e797e77e99
   '@nestjs/jwt': 7.2.0_@nestjs+common@7.6.17
-  '@nestjs/passport': 7.1.5_@nestjs+common@7.6.17
+  '@nestjs/passport': 7.1.5_6b9aabeef2ebcf8aef3549ea590af16a
   '@nestjs/platform-express': 7.6.17_6b1007062d3a29d00cb5e4fdd9b5f494
   '@prisma/client': 2.24.1_prisma@2.24.1
   apollo-server-express: 2.25.0_graphql@15.5.0
   bcrypt: 5.0.1
   graphql: 15.5.0
   graphql-tools: 7.0.5_4fb681aa39537ec5a769d863f0257980
+  passport: 0.4.1
   passport-jwt: 4.0.0
+  passport-local: 1.0.0
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.1.0
@@ -69,6 +74,7 @@ devDependencies:
   '@types/jest': 26.0.23
   '@types/node': 14.17.2
   '@types/passport-jwt': 3.0.5
+  '@types/passport-local': 1.0.33
   '@types/supertest': 2.0.11
   '@typescript-eslint/eslint-plugin': 4.26.0_20402444dce539b9a5aa61b9d15feae1
   '@typescript-eslint/parser': 4.26.0_eslint@7.28.0+typescript@4.3.2
@@ -1622,13 +1628,14 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/passport/7.1.5_@nestjs+common@7.6.17:
+  /@nestjs/passport/7.1.5_6b9aabeef2ebcf8aef3549ea590af16a:
     resolution: {integrity: sha512-Hu9hPxTdBZA0C4GrWTsSflzwsJ99oAk9jqAwpcszdFNqfjMjkPGuCM9QsVZbBP2bE8fxrVrPsNOILS6puY8e/A==}
     peerDependencies:
       '@nestjs/common': ^6.0.0 || ^7.0.0
       passport: ^0.4.0
     dependencies:
       '@nestjs/common': 7.6.17_bc66c5be445bd14e254ef544a46fff64
+      passport: 0.4.1
     dev: false
 
   /@nestjs/platform-express/7.6.17_6b1007062d3a29d00cb5e4fdd9b5f494:
@@ -2081,6 +2088,14 @@ packages:
     dependencies:
       '@types/express': 4.17.12
       '@types/jsonwebtoken': 8.5.1
+      '@types/passport-strategy': 0.2.35
+    dev: true
+
+  /@types/passport-local/1.0.33:
+    resolution: {integrity: sha512-+rn6ZIxje0jZ2+DAiWFI8vGG7ZFKB0hXx2cUdMmudSWsigSq6ES7Emso46r4HJk0qCgrZVfI8sJiM7HIYf4SbA==}
+    dependencies:
+      '@types/express': 4.17.12
+      '@types/passport': 1.0.6
       '@types/passport-strategy': 0.2.35
     dev: true
 
@@ -6765,9 +6780,24 @@ packages:
       passport-strategy: 1.0.0
     dev: false
 
+  /passport-local/1.0.0:
+    resolution: {integrity: sha1-H+YyaMkudWBmJkN+O5BmYsFbpu4=}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      passport-strategy: 1.0.0
+    dev: false
+
   /passport-strategy/1.0.0:
     resolution: {integrity: sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /passport/0.4.1:
+    resolution: {integrity: sha512-IxXgZZs8d7uFSt3eqNjM9NQ3g3uQCW5avD8mRNoXV99Yig50vjuaez6dQK2qC0kVWPRTujxY0dWgGfT09adjYg==}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      passport-strategy: 1.0.0
+      pause: 0.0.1
     dev: false
 
   /path-browserify/1.0.1:
@@ -6808,6 +6838,10 @@ packages:
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  /pause/0.0.1:
+    resolution: {integrity: sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=}
+    dev: false
 
   /picomatch/2.3.0:
     resolution: {integrity: sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==}
