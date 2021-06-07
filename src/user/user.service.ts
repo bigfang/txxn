@@ -6,7 +6,7 @@ import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserInput: CreateUserInput) {

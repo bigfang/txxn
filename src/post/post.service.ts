@@ -5,7 +5,7 @@ import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
 
 @Injectable()
-export class PostsService {
+export class PostService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createPostInput: CreatePostInput) {

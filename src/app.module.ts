@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { PostsModule } from './posts/posts.module';
-import { UsersModule } from './users/users.module';
+import { PostModule } from './post/post.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -11,8 +11,8 @@ import { UsersModule } from './users/users.module';
         numberScalarMode: 'integer',
       },
     }),
-    UsersModule,
-    PostsModule,
+    UserModule,
+    PostModule,
   ],
 })
 export class AppModule {}

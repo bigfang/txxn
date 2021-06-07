@@ -1,6 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { BaseObjectType } from 'src/common/entities/base.entity';
-import { User } from 'src/users/entities/user.entity';
+import { User } from 'src/user/entities/user.entity';
 
 @ObjectType()
 export class Post extends BaseObjectType {

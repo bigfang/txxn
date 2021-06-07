@@ -2,39 +2,39 @@ import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nes
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
 import { Post } from './entities/post.entity';
-import { PostsService } from './posts.service';
+import { PostService } from './post.service';
 
 @Resolver(() => Post)
-export class PostsResolver {
-  constructor(private readonly postsService: PostsService) {}
+export class PostResolver {
+  constructor(private readonly postService: PostService) {}
 
   @ResolveField()
   author(@Parent() post: Post) {
-    return this.postsService.findOne({ id: post.id }).author();
+    return this.postService.findOne({ id: post.id }).author();
   }
 
   @Query(() => [Post], { name: 'posts' })
   findAll() {
-    return this.postsService.findAll();
+    return this.postService.findAll();
   }
 
   @Query(() => Post, { name: 'post' })
   findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.postsService.findOne({ id: id });
+    return this.postService.findOne({ id: id });
   }
 
   @Mutation(() => Post)
   createPost(@Args('createPostInput') createPostInput: CreatePostInput) {
-    return this.postsService.create(createPostInput);
+    return this.postService.create(createPostInput);
   }
 
   @Mutation(() => Post)
   updatePost(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
-    return this.postsService.update(updatePostInput);
+    return this.postService.update(updatePostInput);
   }
 
   @Mutation(() => Post)
   removePost(@Args('id', { type: () => Int }) id: number) {
-    return this.postsService.remove({ id: id });
+    return this.postService.remove({ id: id });
   }
 }
