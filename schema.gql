@@ -40,7 +40,15 @@ type Post {
   isPublished: Boolean!
 }
 
+type LoginResult {
+  id: Int!
+  username: String!
+  access_token: String!
+  refresh_token: String
+}
+
 type Query {
+  login(username: String, email: String, password: String!): LoginResult!
   users: [User!]!
   user(id: Int!): User!
   posts: [Post!]!
