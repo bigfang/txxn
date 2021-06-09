@@ -3,7 +3,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
-import { LocalAuthGuard } from './auth/guards/local-auth.guard';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { PostModule } from './post/post.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
@@ -12,7 +12,7 @@ import { UserModule } from './user/user.module';
   providers: [
     {
       provide: APP_GUARD,
-      useClass: LocalAuthGuard,
+      useClass: JwtAuthGuard,
     },
   ],
   imports: [
