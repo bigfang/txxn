@@ -6,12 +6,11 @@ import { LoginArgs } from './dto/login.args';
 import { LoginResult } from './entities/login.entity';
 
 @Injectable()
-export default class AuthService {
+export class AuthService {
   constructor(private readonly userService: UserService, private readonly jwtService: JwtService) {}
 
   async validateUser(loginArgs: LoginArgs): Promise<LoginResult | undefined> {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {username, email, password} = loginArgs;
+    const { username, email, password } = loginArgs;
     const user = await this.userService.findOne({ username: username });
     if (user && (await bcrypt.compare(password, user.password))) {
       const { password, ...result } = user;

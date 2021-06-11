@@ -1,6 +1,6 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { Public } from 'src/common/decorators/public.decorator';
-import AuthService from './auth.service';
+import { AuthService } from './auth.service';
 import { LoginArgs } from './dto/login.args';
 import { LoginResult } from './entities/login.entity';
 
