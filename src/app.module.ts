@@ -7,6 +7,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { PostModule } from './post/post.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
+import { CaslModule } from './casl/casl.module';
 
 @Module({
   providers: [
@@ -25,6 +26,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     UserModule,
     PostModule,
+    CaslModule,
   ],
 })
 export class AppModule {}
