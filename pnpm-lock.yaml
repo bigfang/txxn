@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@casl/ability': ^5.3.1
   '@nestjs/cli': ^7.6.0
   '@nestjs/common': ^7.6.17
   '@nestjs/config': ^0.6.3
@@ -48,6 +49,7 @@ specifiers:
   webpack-node-externals: ^3.0.0
 
 dependencies:
+  '@casl/ability': 5.3.1
   '@nestjs/common': 7.6.17_bc66c5be445bd14e254ef544a46fff64
   '@nestjs/config': 0.6.3_41db0a5227a0d42697040bd9dc4f4695
   '@nestjs/core': 7.6.17_298e923666cb38181a789e7fa92b320a
@@ -934,6 +936,12 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
+
+  /@casl/ability/5.3.1:
+    resolution: {integrity: sha512-wke2zAJDBKs1VtYPNDz06KyvqOgU0PBLd9kmHpGC9YLxDt9J749riX/8Vc42hxod92m7BENhOW5Yp73ICYVUbg==}
+    dependencies:
+      '@ucast/mongo2js': 1.3.2
+    dev: false
 
   /@cnakazawa/watch/1.0.4:
     resolution: {integrity: sha512-v9kIhKwjeZThiWrLmj0y17CWoyddASLj9O2yvbZkbvw/N3rWOYy9zkV66ursAoVr0mV15bL8g0c4QZUE6cdDoQ==}
@@ -2356,6 +2364,30 @@ packages:
       '@typescript-eslint/types': 4.26.1
       eslint-visitor-keys: 2.1.0
     dev: true
+
+  /@ucast/core/1.10.0:
+    resolution: {integrity: sha512-utMIzLxgsj1VkPTN9Yzt9EaCPWYdF33Pe6fxhsK/jEiMf8M0w/cM4K3Ywc3tZSBn/Cc2YQsx7pVYe8I2NWrBRg==}
+    dev: false
+
+  /@ucast/js/3.0.1:
+    resolution: {integrity: sha512-sabiuYsM5VUg4EaCwlDxnqcrHPFvbZcXvBu+P/o4pqK2q046RLTdo0bM7iVCn5Ro4HpCiRv3QzxtW8epcluY1g==}
+    dependencies:
+      '@ucast/core': 1.10.0
+    dev: false
+
+  /@ucast/mongo/2.4.1:
+    resolution: {integrity: sha512-l/hc3TxjWO9inBrgM5iMCAcsIeV2DToppRlabQa5xB/6uHYtCXfm3TPaJgr8TU1OFxqPlaXEnNQhaV0sVHGsoQ==}
+    dependencies:
+      '@ucast/core': 1.10.0
+    dev: false
+
+  /@ucast/mongo2js/1.3.2:
+    resolution: {integrity: sha512-KNOEs61wxo4VJkVGqwP2a03TKuLx9fLMQgW5HD8Th/mrcuP1SspS4W+kUQD+wB1AA5pOn65hzlHUw5wZBwme0Q==}
+    dependencies:
+      '@ucast/core': 1.10.0
+      '@ucast/js': 3.0.1
+      '@ucast/mongo': 2.4.1
+    dev: false
 
   /@webassemblyjs/ast/1.11.0:
     resolution: {integrity: sha512-kX2W49LWsbthrmIRMbQZuQDhGtjyqXfEmmHyEi4XWnSZtPmxY0+3anPIzsnRb45VH/J55zlOfWvZuY47aJZTJg==}
