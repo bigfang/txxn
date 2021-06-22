@@ -13,32 +13,32 @@ export class UserResolver {
   ) {}
 
   @ResolveField()
-  posts(@Parent() author: User) {
-    return this.postServide.findAll({ authorId: author.id });
+  async posts(@Parent() author: User) {
+    return await this.postServide.findAll({ authorId: author.id });
   }
 
   @Query(() => [User], { name: 'users' })
-  findAll() {
-    return this.userService.findAll();
+  async findAll() {
+    return await this.userService.findAll();
   }
 
   @Query(() => User, { name: 'user' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.userService.findOne({ id: id });
+  async findOne(@Args('id', { type: () => Int }) id: number) {
+    return await this.userService.findOne({ id: id });
   }
 
   @Mutation(() => User)
-  createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
-    return this.userService.create(createUserInput);
+  async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
+    return await this.userService.create(createUserInput);
   }
 
   @Mutation(() => User)
-  updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
-    return this.userService.update(updateUserInput);
+  async updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
+    return await this.userService.update(updateUserInput);
   }
 
   @Mutation(() => User)
-  removeUser(@Args('id', { type: () => Int }) id: number) {
-    return this.userService.remove({ id: id });
+  async removeUser(@Args('id', { type: () => Int }) id: number) {
+    return await this.userService.remove({ id: id });
   }
 }

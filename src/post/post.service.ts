@@ -8,12 +8,12 @@ import { UpdatePostInput } from './dto/update-post.input';
 export class PostService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(createPostInput: CreatePostInput) {
-    return this.prisma.post.create({ data: createPostInput });
+  async create(createPostInput: CreatePostInput) {
+    return await this.prisma.post.create({ data: createPostInput });
   }
 
-  findAll(where?: Prisma.PostWhereInput) {
-    return this.prisma.post.findMany({ where: where });
+  async findAll(where?: Prisma.PostWhereInput) {
+    return await this.prisma.post.findMany({ where: where });
   }
 
   findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
@@ -22,16 +22,16 @@ export class PostService {
     });
   }
 
-  update(updatePostInput: UpdatePostInput) {
+  async update(updatePostInput: UpdatePostInput) {
     const { id, ...restInput } = updatePostInput;
-    return this.prisma.post.update({
+    return await this.prisma.post.update({
       where: { id: id },
       data: restInput,
     });
   }
 
-  remove(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
-    return this.prisma.post.delete({
+  async remove(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
+    return await this.prisma.post.delete({
       where: postWhereUniqueInput,
     });
   }

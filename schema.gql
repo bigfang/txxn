@@ -13,7 +13,7 @@ type User {
   updatedAt: DateTime!
 
   """文章"""
-  posts: [Post!]!
+  posts: [Post!]
   username: String!
   email: String!
 }

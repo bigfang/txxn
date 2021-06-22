@@ -12,31 +12,31 @@ export class UserService {
   async create(createUserInput: CreateUserInput) {
     const { username, email, password } = createUserInput;
     const passwordHash = await bcrypt.hash(password, 10);
-    return this.prisma.user.create({
+    return await this.prisma.user.create({
       data: { username: username, email: email, password: passwordHash },
     });
   }
 
-  findAll(where?: Prisma.UserWhereInput) {
-    return this.prisma.user.findMany({ where: where });
+  async findAll(where?: Prisma.UserWhereInput) {
+    return await this.prisma.user.findMany({ where: where });
   }
 
-  findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
-    return this.prisma.user.findUnique({
+  async findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
+    return await this.prisma.user.findUnique({
       where: userWhereUniqueInput,
     });
   }
 
   async update(updateUserInput: UpdateUserInput) {
     const { id, ...restInput } = updateUserInput;
-    return this.prisma.user.update({
+    return await this.prisma.user.update({
       where: { id: id },
       data: restInput,
     });
   }
 
-  remove(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
-    return this.prisma.user.delete({
+  async remove(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
+    return await this.prisma.user.delete({
       where: userWhereUniqueInput,
     });
   }
