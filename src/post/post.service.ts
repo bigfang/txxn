@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { PaginationArgs } from 'src/common/pagination';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
@@ -12,13 +13,28 @@ export class PostService {
     return await this.prisma.post.create({ data: createPostInput });
   }
 
-  async findAll(where?: Prisma.PostWhereInput) {
-    return await this.prisma.post.findMany({ where: where });
+  async findAll(where?: Prisma.PostWhereInput, paginationArgs?: PaginationArgs) {
+    let result;
+    if (paginationArgs?.first) {
+      if (paginationArgs?.offset) {
+        result = await this.prisma.post.findMany({
+          skip: paginationArgs.offset,
+          take: paginationArgs.first,
+          where: where,
+        });
+      }
+    } else {
+      result = await this.prisma.post.findMany({
+        where: where,
+      });
+    }
+    return result;
   }
 
-  findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
-    return this.prisma.post.findUnique({
+  async findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
+    return await this.prisma.post.findUnique({
       where: postWhereUniqueInput,
+      include: { author: true },
     });
   }
 

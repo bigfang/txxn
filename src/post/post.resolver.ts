@@ -10,7 +10,8 @@ export class PostResolver {
 
   @ResolveField()
   async author(@Parent() post: Post) {
-    return await this.postService.findOne({ id: post.id }).author();
+    const data = await this.postService.findOne({ id: post.id });
+    return data?.author;
   }
 
   @Query(() => [Post], { name: 'posts' })
