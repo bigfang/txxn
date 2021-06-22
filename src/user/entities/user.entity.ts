@@ -7,6 +7,6 @@ export class User extends BaseObjectType {
   username: string;
   email: string;
 
-  @Field(() => [Post], { description: '文章' })
-  posts: Post[];
+  @Field(() => [Post], { nullable: true, description: '文章' })
+  posts?: Post[];
 }
