@@ -5,6 +5,9 @@ export class BaseObjectType {
   @Field(() => Int, { description: 'ID' })
   id: number;
 
+  @Field(() => String, { description: 'Node ID' })
+  nodeId: string;
+
   @Field(() => Date, { description: '创建时间' })
   createdAt: Date;
 
