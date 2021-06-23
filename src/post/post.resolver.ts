@@ -1,7 +1,8 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { PaginationArgs } from 'src/common/pagination';
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
-import { Post } from './entities/post.entity';
+import { PaginatedPost, Post } from './entities/post.entity';
 import { PostService } from './post.service';
 
 @Resolver(() => Post)
@@ -10,12 +11,13 @@ export class PostResolver {
 
   @ResolveField()
   async author(@Parent() post: Post) {
-    return await this.postService.findOne({ id: post.id }).author();
+    const data = await this.postService.findOne({ id: post.id });
+    return data?.author;
   }
 
-  @Query(() => [Post], { name: 'posts' })
-  async findAll() {
-    return await this.postService.findAll();
+  @Query(() => PaginatedPost, { name: 'posts' })
+  async findAll(@Args() pagination: PaginationArgs) {
+    return await this.postService.findAll({}, pagination);
   }
 
   @Query(() => Post, { name: 'post' })

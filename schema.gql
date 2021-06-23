@@ -2,9 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
 type User {
   """ID"""
   id: Int!
+
+  """Node ID"""
+  nodeId: String!
 
   """创建时间"""
   createdAt: DateTime!
@@ -27,6 +37,9 @@ type Post {
   """ID"""
   id: Int!
 
+  """Node ID"""
+  nodeId: String!
+
   """创建时间"""
   createdAt: DateTime!
 
@@ -40,6 +53,18 @@ type Post {
   isPublished: Boolean!
 }
 
+type PaginatedPost {
+  totalCount: Int!
+  pageInfo: PageInfo
+  edges: [PostEdge!]
+  nodes: [Post!]
+}
+
+type PostEdge {
+  cursor: String!
+  node: Post!
+}
+
 type LoginResult {
   id: Int!
   username: String!
@@ -51,7 +76,7 @@ type Query {
   login(username: String, email: String, password: String!): LoginResult!
   users: [User!]!
   user(id: Int!): User!
-  posts: [Post!]!
+  posts(offset: Int, first: Int, after: String, last: Int, before: String): PaginatedPost!
   post(id: Int!): Post!
 }
 

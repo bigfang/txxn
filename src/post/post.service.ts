@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { encodeCursor, encodeNodeId, PageInfo, PaginationArgs } from 'src/common/pagination';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreatePostInput } from './dto/create-post.input';
 import { UpdatePostInput } from './dto/update-post.input';
@@ -12,13 +14,51 @@ export class PostService {
     return await this.prisma.post.create({ data: createPostInput });
   }
 
-  async findAll(where?: Prisma.PostWhereInput) {
-    return await this.prisma.post.findMany({ where: where });
+  async findAll(where?: Prisma.PostWhereInput, paginationArgs?: PaginationArgs) {
+    const { offset, after, first, before, last } = paginationArgs || {};
+    const totalCount = this.prisma.post.count({ where: where });
+
+    const [skip, take] = [offset || 0, first];
+
+    let result;
+    if (take) {
+      result = await this.prisma.post.findMany({
+        skip: skip,
+        take: take,
+        where: where,
+      });
+    } else {
+      result = await this.prisma.post.findMany({
+        where: where,
+      });
+    }
+
+    const nodes = result.map(value => ({ ...value, nodeId: encodeNodeId(value.id, "post") }))
+
+    const edges = nodes.map(node => ({
+      node: node,
+      cursor: encodeCursor(node.id),
+    }));
+
+    const pageInfo: PageInfo = {
+      startCursor: nodes.length > 0 ? encodeCursor(nodes[0].id) : undefined,
+      endCursor: nodes.length > 0 ? encodeCursor(nodes.slice(-1)[0].id) : undefined,
+      hasNextPage: false,
+      hasPreviousPage: skip != 0,
+    };
+
+    return {
+      totalCount: totalCount,
+      pageInfo: pageInfo,
+      edges: edges,
+      nodes: nodes,
+    };
   }
 
-  findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
-    return this.prisma.post.findUnique({
+  async findOne(postWhereUniqueInput: Prisma.PostWhereUniqueInput) {
+    return await this.prisma.post.findUnique({
       where: postWhereUniqueInput,
+      include: { author: true },
     });
   }
 
