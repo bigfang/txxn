@@ -1,0 +1,26 @@
+{
+  "jsc": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    },
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": true,
+      "dynamicImport": false
+    },
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    },
+    "target": "es2018",
+    "keepClassNames": false
+  },
+  "module": {
+    "type": "commonjs",
+    "noInterop": false
+  },
+  "minify": true,
+  "sourceMaps": true
+}
